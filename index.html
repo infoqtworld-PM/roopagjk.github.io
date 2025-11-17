@@ -1,26 +1,536 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>InfoQTWorld - Roopa Portfolio</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom right, #f8e8ff, #ffffff);
-            text-align: center;
-            padding-top: 100px;
-        }
-        h1 {
-            color: #6C2EB9;
-        }
-        p {
-            font-size: 20px;
-            color: #444;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roopashree Gurumurthy – Project Program Manager & Consultant</title>
+
+  <style>
+    :root {
+      --bg-card: #ffffff;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.12);
+      --border-soft: #e5e7eb;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ffe6f4, #e7efff);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 32px auto 60px;
+      padding: 0 20px;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(260px, 2fr);
+      gap: 32px;
+      align-items: center;
+      background: linear-gradient(135deg, #eef2ff, #ffe6f4);
+      border-radius: 28px;
+      padding: 32px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content,
+    .hero-photo-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(255, 255, 255, 0.95);
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px #22c55e;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 620px;
+    }
+
+    .hero-highlights {
+      margin: 16px 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      padding: 4px 11px;
+      font-size: 12px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: #1f2933;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff;
+      font-weight: 600;
+      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 30px rgba(37, 99, 235, 0.45);
+    }
+
+    .btn-ghost {
+      background: #ffffff;
+      border-color: var(--border-soft);
+      color: #111827;
+      font-weight: 500;
+    }
+
+    .btn-ghost:hover {
+      background: #e5e7eb;
+    }
+
+    .hero-meta {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* PHOTO CARD */
+    .hero-photo-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-photo-card {
+      padding: 10px;
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      width: 260px;
+    }
+
+    .hero-photo {
+      width: 100%;
+      border-radius: 20px;
+      border: 1px solid var(--border-soft);
+      object-fit: cover;
+      aspect-ratio: 3/4;
+    }
+
+    .hero-photo-caption {
+      padding-top: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* GRID + SECTIONS */
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .section {
+      margin-top: 28px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      padding: 20px;
+      border-radius: 20px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+    }
+
+    .card h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .card-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .mini-pill {
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+    }
+
+    .timeline-item {
+      margin-bottom: 12px;
+      border-bottom: 1px dashed #e5e7eb;
+      padding-bottom: 10px;
+    }
+
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+
+    .timeline-role {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .timeline-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .timeline-text {
+      font-size: 13px;
+      color: var(--text-main);
+      margin-top: 4px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 12px;
+      color: var(--text-muted);
+      padding-top: 10px;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-photo-wrapper {
+        order: -1;
+        margin-bottom: 10px;
+      }
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="page">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="tag">
+          <span class="tag-dot"></span>
+          Open to Porject Program Manager & Digital Transformation Roles
+        </div>
+
+        <h1>Roopashree Gurumurthy</h1>
+        <p class="hero-subtitle">
+          Program Manager · PMO & Digital Transformation Leader · AI-LLM-aware consulting for SMEs & founders · Founder of Quantum Transformation World (QTW).
+        </p>
+
+        <div class="hero-highlights">
+          <div class="pill">AI & LLM Adoption</div>
+          <div class="pill">Enterprise Program Management</div>
+          <div class="pill">Healthcare & Public Sector</div>
+          <div class="pill">Cloud & Integrations</div>
+          <div class="pill">Change & Stakeholder Management</div>
+        </div>
+
+        <div class="hero-actions">
+          <a
+            class="btn-primary"
+            href="https://calendly.com/roopagjk/30min"
+            target="_blank"
+          >
+            📅 Book a Call
+          </a>
+
+          <!-- Make sure this PDF file is in the same folder as index.html -->
+          <a
+            class="btn-ghost"
+            href="Roopashree_Gurumurthy_Resume.pdf"
+            download
+          >
+            ⬇️ Download Resume (PDF)
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          Winnipeg, Manitoba · Open to Remote / Hybrid · Program Management · PMO · Digital Transformation & Consulting
+        </div>
+      </div>
+
+      <div class="hero-photo-wrapper">
+        <div class="hero-photo-card">
+          <img
+            src="roopa.jpg"
+            alt="Photo of Roopashree Gurumurthy"
+            class="hero-photo"
+          />
+          <div class="hero-photo-caption">
+            “Bringing structure, clarity, and heart to Technology-led transformation and Change Management.”
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI & QTW GRID -->
+    <section class="grid">
+      <div class="card">
+        <h2>AI & Digital Transformation Focus</h2>
+        <div class="card-subtitle">
+          Practical, business-aligned structure for AI and digital initiatives.
+        </div>
+        <div class="pill-row">
+          <span class="mini-pill">AI Program Management</span>
+          <span class="mini-pill">LLM Workflows & Governance</span>
+          <span class="mini-pill">Healthcare & Public Sector</span>
+          <span class="mini-pill">CRM / ERP / LMS</span>
+          <span class="mini-pill">PMO Governance</span>
+        </div>
+        <p style="font-size:13px; color:#374151;">
+          I help organizations move from curiosity to execution with AI and digital tools. This includes designing rollout strategies,
+          governance frameworks, readiness assessments, and adoption plans for AI assistants, automation, and core platforms.
+          I work across business, IT, and stakeholders to keep initiatives grounded, measurable, and human-centered.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Founder – Quantum Transformation World (QTW)</h2>
+        <div class="card-subtitle">
+          Long-term vision integrating AI, leadership, and conscious transformation.
+        </div>
+        <p style="font-size:13px; color:#374151;">
+          Through QTW, I bring an entrepreneurial and human lens to AI and digital change. I create frameworks, content, and tools that
+          support leaders and teams navigating transformation – combining mindset, structure, and AI-assisted workflows to unlock
+          more aligned, sustainable performance.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONSULTING & PROGRAM MANAGEMENT -->
+    <section class="section">
+      <div class="card">
+        <h2>Consulting & Program Management (Prosai Wealth Consulting)</h2>
+        <div class="card-subtitle">
+          How I support organizations, founders, and growing companies.
+        </div>
+        <ul style="font-size:13px; color:#374151; padding-left:18px; margin:0;">
+          <li>End-to-end program leadership for digital transformation initiatives (CRM/ERP, websites, LMS, data, AI).</li>
+          <li>Design and delivery of AI rollout programs: pilots, scaling plans, governance, training, and adoption KPIs.</li>
+          <li>Creation of HTML/CSS portfolio and landing pages to clarify offerings and support lead generation.</li>
+          <li>PMO setup, governance frameworks, dashboards, and reporting for visibility and accountability.</li>
+          <li>Change management planning: communication, stakeholder engagement, and readiness assessment.</li>
+          <li>Vendor selection and management, SOW review, contract oversight, and delivery performance tracking.</li>
+          <li>Fractional program leadership and advisory support for startups and mission-driven organizations.</li>
+        </ul>
+      </div>
+    </section>
+
+      <!-- EXPERIENCE -->
+    <section class="section">
+      <div class="card">
+        <h2>Selected Experience</h2>
+        <div class="card-subtitle">
+          Highlights from enterprise programs, healthcare projects, and consulting.
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-role">Program Manager – Digital Transformation & Enterprise Systems</div>
+          <div class="timeline-meta">NTT Data · Multiple cleint base including Shared Health–Aligned Programs</div>
+          <div class="timeline-text">
+            Led multi-workstream programs across ERP, clinical systems, integrations, and change management. Led Cloud AWS migration and other digital transformation projects. 
+            Spearheaded Business projects of Mergers and Aquisitions with extensive collaboration and stakeholders focused.
+            Built PMO reporting, RAID logs, and executive dashboards while coordinating cross-functional teams and vendors.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-role">Project Manager – Global & Analytics Programs</div>
+          <div class="timeline-meta">IBM · Harman Connected Services</div>
+          <div class="timeline-text">
+            Delivered analytics, BI, automation, and migration projects with distributed teams. Managed timelines, risks, integrations,
+            and stakeholder expectations across global client environments.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-role">Founder & Principal Consultant – Prosai Wealth Consulting</div>
+          <div class="timeline-meta">AI, Digital, Real Estate & Capital Strategy</div>
+          <div class="timeline-text">
+            Built a consulting practice that blends AI-aware program management, digital presence design, and real estate capital
+            structuring to help clients stabilize, grow, and transform with clarity.
+          </div>
+        </div>
+      </div>
+    </section>
+<section class="card">
+  <h2>QTW Mindset & Leadership Coaching</h2>
+  <p style="font-size:13px; color:#374151;">
+    Through Quantum Transformation World (QTW), I offer mindset and leadership coaching that helps individuals and teams align 
+    their energy, clarity, and decision-making with their professional goals. This work blends emotional intelligence, structured 
+    thinking, and grounded action to create stable inner leadership during transformation.
+  </p>
+
+  <ul style="font-size:13px; color:#374151; padding-left:18px; margin:0;">
+    <li>Coaching on clarity, confidence, and emotional stability during career or organizational transitions.</li>
+    <li>Mindset frameworks that support resilience, decision-making, and high-accountability roles.</li>
+    <li>Integration of mindset and strategy for founders, professionals, and teams navigating rapid change.</li>
+    <li>Helping individuals shift from reactive patterns to aligned, empowered, and purposeful action.</li>
+    <li>Focused support for burnout prevention, nervous system balance, and sustainable performance.</li>
+  </ul>
+</section>
+<!-- REAL ESTATE & CAPITAL RAISING UNDER PROSAI -->
+    <section class="section">
+      <div class="card">
+        <h2>Real Estate Strategy & Capital Raising (Prosai Wealth Consulting)</h2>
+        <div class="card-subtitle">
+          Applying program management, financial structuring, and long-term planning to real estate.
+        </div>
+        <p style="font-size:13px; color:#374151;">
+          Prosai Wealth Consulting also reflects my work as a real estate investor and capital raising advisor. I bring the same
+          disciplined program management approach to real estate that I apply to digital initiatives.
+        </p>
+        <ul style="font-size:13px; color:#374151; padding-left:18px; margin:0;">
+          <li>Capital raising through private lending, joint ventures, seller financing, and rent-to-own models.</li>
+          <li>End-to-end project management for property improvements, budgeting, risk, and vendor coordination.</li>
+          <li>Financial modeling for cash flow, ROI, cap rates, refinancing, and equity lift strategies.</li>
+          <li>Support with acquisition analysis, due diligence, and long-term portfolio planning.</li>
+          <li>Collaboration with lenders, mortgage brokers, legal teams, contractors, and appraisers.</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- EDUCATION & CREDENTIALS -->
+    <section class="section">
+      <div class="card">
+        <h2>Education & Credentials</h2>
+        <ul style="font-size:13px; color:#374151; padding-left:18px; margin:0;">
+          <li>PMP – Project Management Professional (PMI)</li>
+          <li>PRINCE2 Practitioner</li>
+          <li>Certified Scrum Master (CSM)</li>
+          <li>Agile Coach Practitioner (ICAgile)</li>
+          <li>Postgraduate Diploma in Project Management – PACE, University of Winnipeg</li>
+          <li>MBA in Finance – India</li>
+          <li>Bachelor of Engineering – India</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- LET'S CONNECT -->
+    <section class="section">
+      <div class="card">
+        <h2>Let’s Connect</h2>
+        <p style="font-size:13px; color:#374151; margin-top:4px;">
+          I am open to roles such as <strong>Project Program Manager</strong>, <strong>Program Manager – Digital Transformation</strong>,
+          or <strong>PMO / Transformation Leadership</strong>, as well as consulting engagements where a blend of structure, creativity,
+          and ownership is needed.
+        </p>
+        <p style="font-size:13px; color:#374151;">
+          📅 Book a call: <a href="https://calendly.com/roopagjk/30min" target="_blank">calendly.com/roopagjk/30min</a><br/>
+          📧 Email: <a href="mailto:roopashree.81@gmail.com">roopashree.81@gmail.com</a><br/>
+          🔗 LinkedIn: <a href="https://www.linkedin.com/in/roopagjk" target="_blank">linkedin.com/in/roopagjk</a><br/>
+          📍 Winnipeg, MB · Open to remote / hybrid across Canada & beyond
+        </p>
+      </div>
+    </section>
+
+    <div class="footer">
+      © <span id="year"></span> Roopashree Gurumurthy · Professional Portfolio
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
     <h1>Welcome to Roopa’s Portfolio</h1>
     <p>Your GitHub Pages site is live! 🌟</p>
     <p>More sections coming soon: QTW, VegaWeb.ai, VegaFlow.ai</p>
